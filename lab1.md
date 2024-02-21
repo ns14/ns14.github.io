@@ -24,28 +24,13 @@ allowfullscreen></iframe>
 
 The first sensor was tested using Example2_analogRead which was the temperature sensor. As can be seen in the video, as I pressed onto the sensor (to warm it up), the temperature reading in the Serial monitor increased. As I waved the sensor around (i.e. causing it to cool down with the cool air), the temperature reading in the Serial monitor decreased.
 
-<iframe width="315" height="560"
-src="https://youtube.com/shorts/iQT44lFqC1w"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
+<iframe width="315" height="560" src="https://youtube.com/shorts/iQT44lFqC1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
 
 Lastly, I tested the microphone using Example1_MicrophoneOutput. I used an online note player to see how the frequency of the sound would change. I also then used a music video to see how the microphone would return frequencies that had a lot of noise. It was interesting to see that the microphone was able to discern out the highest frequency noises from the jazz music which actually consisted of a medley of frequencies.
 
-<iframe width="315" height="560"
-src="https://youtu.be/DXHieDjCzVo"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
+<iframe width="315" height="560" src="https://youtu.be/DXHieDjCzVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
 
-<iframe width="315" height="560"
-src="https://youtu.be/P9mhESTJ3GM"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
+<iframe width="315" height="560" src="https://youtu.be/P9mhESTJ3GM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
 
 # Lab 1 (Part B):
 
@@ -77,12 +62,7 @@ I also was having issues initially establishing a bluetooth connection and had t
 
 To check that the Bluetooth connection was properly established, I ran through demo.py. I was successfully able to go through all the code blocks as can be seen below:
 
-<iframe width="315" height="560"
-src="https://youtu.be/zKxTG53Y9IA"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
+<iframe width="315" height="560" src="https://youtu.be/zKxTG53Y9IA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
 
 Check for Understanding: The Bluetooth codebase consists of various scripts that allow a Bluetooth connection to be enabled between the Artemis and my computer. ble_arduino.ino takes care of this from the Artemis side. First, the UUIDs that were generated above help identify types of data that will be sent between the Artemis and my computer. BLEService is then used to set the local name and service, add BLE characteristics, and service. The characteristics are different types of data provided by the ArduinoBLE (in our case, we only use BLECStringCharacteristic). Then, there are functions that can write values from the Artemis to transmit to the computer.
 
@@ -113,7 +93,6 @@ Now, I tested another method of sending data where the data would be added to a 
 <img width="514" alt="Screenshot 2024-02-21 at 5 32 35 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/b6436d14-341f-4e71-bb9a-17aaba499d8b">
 
 <img width="424" alt="Screenshot 2024-02-21 at 5 32 58 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/afe12097-67e3-40e7-8881-716798a587cf">
-
 
 <img width="715" alt="Screenshot 2024-02-21 at 5 32 46 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/94193b39-e085-485a-9291-14f31c511bba">
 
