@@ -6,13 +6,19 @@ layout: default
 
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink on and off which is useful in the future to denote when the Artemis is on (such as on boot up).
 
-
+<add video here>
 
 Following this, I followed the Example: Serial. This allowed me to type in character inputs and then receive those same character outputs in the Serial monitor. This would be useful for later parts of the lab when I would need to use the Serial monitor to receive temperature readings from the board.
 
+<add video here>
+
 The first sensor was tested using Example2_analogRead which was the temperature sensor. As can be seen in the video, as I pressed onto the sensor (to warm it up), the temperature reading in the Serial monitor increased. As I waved the sensor around (i.e. causing it to cool down with the cool air), the temperature reading in the Serial monitor decreased.
 
+<add video here>
+
 Lastly, I tested the microphone using Example1_MicrophoneOutput. I used an online note player to see how the frequency of the sound would change. I also then used a music video to see how the microphone would return frequencies that had a lot of noise. It was interesting to see that the microphone was able to discern out the highest frequency noises from the jazz music which actually consisted of a medley of frequencies.
+
+<add video here>
 
 # Lab 1 (Part B):
 
@@ -22,25 +28,51 @@ After creating my virtual environment ("fastrobots_ble"), I installed the necess
 
 The first setup task was to establish the Bluetooth connection. To do this, I ran ble_arduino.ino and was able to print the MAC address:
 
-In connections.yaml, I then updated the MAC address to match the MAC address printed in the Serial monitor.<img 
-                                                                                                             width="342" alt="Screenshot 2024-02-21 at 4 20 29 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/951860eb-12cb-416d-98ee-6162454e9d80">
+<img width="340" alt="Screenshot 2024-02-21 at 4 27 30 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/9df45b2d-5110-4d51-8fe2-fd801b4f9cac">
 
+In connections.yaml, I then updated the MAC address to match the MAC address printed in the Serial monitor:
 
-I then used uuid4() to generate a new UUID and replaced it in both ble_arduino.ino and connections.yaml.
+<img width="342" alt="Screenshot 2024-02-21 at 4 20 29 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/951860eb-12cb-416d-98ee-6162454e9d80">
 
-I also was having issues initially establishing a bluetooth connection and had to change if IS_ATLEAST_MAC_OS_12 to if True. I then checked that all the command types in enum and cmd_types.py were the same.
+I then used uuid4() to generate a new UUID and replaced it in both ble_arduino.ino and connections.yaml:
+
+<img width="497" alt="Screenshot 2024-02-21 at 4 23 11 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/571b859b-81a1-45c1-9ddd-c6dc77fef250">
+
+Updates in connection.yaml:
+
+<img width="409" alt="Screenshot 2024-02-21 at 4 22 07 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5cfc6100-567a-4325-95a5-655b8f7b25bf">
+
+I also was having issues initially establishing a bluetooth connection and had to change if IS_ATLEAST_MAC_OS_12 to if True in the base_ble.py file. I then confirmed that all the command types in enum and cmd_types.py were the same.
+
+<img width="207" alt="Screenshot 2024-02-21 at 4 23 56 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/bf5cd0a2-4264-4413-9ecf-db34a45e45c5">
+
+<img width="168" alt="Screenshot 2024-02-21 at 4 24 12 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5e719fba-2c2c-45f0-9248-28e615a74921">
 
 To check that the Bluetooth connection was properly established, I ran through demo.py. I was successfully able to go through all the code blocks as can be seen below:
 
-Check for Understanding: The Bluetooth codebase consists of various scripts that allow a Bluetooth connection to be enabled between the Artemis and my computer. ble_arduino.ino takes care of this from the Artemis side. First, the UUIDs that were generated above help identify types of data that will be sent between the Artemis and my computer. BLEService is then used to set the local name and service, add BLE characteristics and service. The characteristics are different types of data provided by the ArduinoBLE (in our case, we only use BLECStringCharacteristic). Then, there are functions that can write values from the Artemis to transmit to the computer.
+<add video here>
+
+Check for Understanding: The Bluetooth codebase consists of various scripts that allow a Bluetooth connection to be enabled between the Artemis and my computer. ble_arduino.ino takes care of this from the Artemis side. First, the UUIDs that were generated above help identify types of data that will be sent between the Artemis and my computer. BLEService is then used to set the local name and service, add BLE characteristics, and service. The characteristics are different types of data provided by the ArduinoBLE (in our case, we only use BLECStringCharacteristic). Then, there are functions that can write values from the Artemis to transmit to the computer.
 
 # Lab Tasks
 
-The first task was to send a string value from the computer to the Artemis and then to send that string back from the Artemis to the computer with an added string. I was able to accomplish this by using similar logic as the PING case in the code.
+The first task was to send a String from the computer to the Artemis and then to send an augmented String back from the Artemis to the computer. I was able to accomplish this by using similar logic as the PING case in the code.
 
-The next task was to return a string characteristic with the time. This task was fairly straightforward, and I used the millis() function in C to get the time and then append it to “T:”
+<img width="539" alt="Screenshot 2024-02-21 at 4 28 14 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/febed7cf-070c-415f-bcb9-3fcfea96e067">
 
-After being able to receive the time, the next step was to set up a notification handler to receive the string value, and then, in the callback, receive the time from the string that was sent. I was able to do this using the code below.
+The output of echo with String "test" can be seen here:
+
+<img width="409" alt="Screenshot 2024-02-21 at 4 29 03 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/7aa9f2ce-9f0e-4468-bd31-2f1780ecfb20">
+
+The next task was to return a String characteristic with the time. This task was fairly straightforward, and I used the millis() function in C to get the time and then append it to “T:”
+
+<img width="487" alt="Screenshot 2024-02-21 at 4 30 16 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/2fe160fd-19ac-4e4c-9c5b-10a19cc6621d">
+
+<img width="407" alt="Screenshot 2024-02-21 at 4 32 05 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/c310fed2-15ac-40d1-842e-243ac3353d1a">
+
+After being able to receive the time, the next step was to set up a notification handler to receive the string value, and then, in the callback, receive the time from the string that was sent. I was able to do this using the code below (when I initially tested this code, I kept receiving an error that the notification handler was already enabled; this was because I had not used "stop_notify" when testing. I looked at Julian Prieto and Jueun Kwon's pages from last year to help me debug this issue.
+
+<img width="419" alt="Screenshot 2024-02-21 at 4 35 28 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/0c561109-1eed-417e-8462-12feab8c67dd">
 
 After setting up a notification handler, I wrote a loop to get the current time from the Artemis and sent it to the notification handler. After collecting some values, I was able to calculate how fast the messages could be sent by:
 
