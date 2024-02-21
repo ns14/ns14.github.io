@@ -6,19 +6,46 @@ layout: default
 
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink on and off which is useful in the future to denote when the Artemis is on (such as on boot up).
 
-<add video here>
+<iframe width="315" height="560"
+src="https://youtube.com/shorts/WW7X_P9v2Ms?feature=shared"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 Following this, I followed the Example: Serial. This allowed me to type in character inputs and then receive those same character outputs in the Serial monitor. This would be useful for later parts of the lab when I would need to use the Serial monitor to receive temperature readings from the board.
 
-<add video here>
+<iframe width="315" height="560"
+src="https://youtube.com/shorts/iQT44lFqC1w"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 The first sensor was tested using Example2_analogRead which was the temperature sensor. As can be seen in the video, as I pressed onto the sensor (to warm it up), the temperature reading in the Serial monitor increased. As I waved the sensor around (i.e. causing it to cool down with the cool air), the temperature reading in the Serial monitor decreased.
 
-<add video here>
+<iframe width="315" height="560"
+src="https://youtube.com/shorts/iQT44lFqC1w"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 Lastly, I tested the microphone using Example1_MicrophoneOutput. I used an online note player to see how the frequency of the sound would change. I also then used a music video to see how the microphone would return frequencies that had a lot of noise. It was interesting to see that the microphone was able to discern out the highest frequency noises from the jazz music which actually consisted of a medley of frequencies.
 
-<add video here>
+<iframe width="315" height="560"
+src="https://youtu.be/DXHieDjCzVo"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+
+<iframe width="315" height="560"
+src="https://youtu.be/P9mhESTJ3GM"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 # Lab 1 (Part B):
 
@@ -50,7 +77,12 @@ I also was having issues initially establishing a bluetooth connection and had t
 
 To check that the Bluetooth connection was properly established, I ran through demo.py. I was successfully able to go through all the code blocks as can be seen below:
 
-<add video here>
+<iframe width="315" height="560"
+src="https://youtu.be/zKxTG53Y9IA"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 Check for Understanding: The Bluetooth codebase consists of various scripts that allow a Bluetooth connection to be enabled between the Artemis and my computer. ble_arduino.ino takes care of this from the Artemis side. First, the UUIDs that were generated above help identify types of data that will be sent between the Artemis and my computer. BLEService is then used to set the local name and service, add BLE characteristics, and service. The characteristics are different types of data provided by the ArduinoBLE (in our case, we only use BLECStringCharacteristic). Then, there are functions that can write values from the Artemis to transmit to the computer.
 
