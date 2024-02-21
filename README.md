@@ -1,6 +1,6 @@
 # ns14.github.io
 
-#Lab 1 (Part A):
+# Lab 1 (Part A):
 
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink.
 
