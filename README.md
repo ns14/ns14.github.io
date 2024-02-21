@@ -6,7 +6,7 @@ Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions
 
 
 
-https://github.com/ns14/ns14.github.io/assets/65001356/b2e8661c-c586-4d33-873f-9f9689c8d209
+https://github.com/ns14/ns14.github.io/assets/65001356/dc0bd0c3-23ec-4e27-b7da-248fdbd20016
 
 
 
