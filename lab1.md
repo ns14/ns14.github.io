@@ -70,19 +70,30 @@ The next task was to return a String characteristic with the time. This task was
 
 <img width="407" alt="Screenshot 2024-02-21 at 4 32 05 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/c310fed2-15ac-40d1-842e-243ac3353d1a">
 
-After being able to receive the time, the next step was to set up a notification handler to receive the string value, and then, in the callback, receive the time from the string that was sent. I was able to do this using the code below (when I initially tested this code, I kept receiving an error that the notification handler was already enabled; this was because I had not used "stop_notify" when testing. I looked at Julian Prieto and Jueun Kwon's pages from last year to help me debug this issue.
+After being able to receive the time, the next step was to set up a notification handler to receive the string value, and then, in the callback, receive the time from the string that was sent. This is useful to speed up the main control loop (rather than having to wait for data, it takes care of receiving and processing the data without slowing down other processes). I was able to implement a notification handler by using the code below (when I initially tested this code, I kept receiving an error that the notification handler was already enabled; this was because I had not used "stop_notify" when testing. I looked at Julian Prieto and Jueun Kwon's pages from last year to help me debug this issue).
 
 <img width="419" alt="Screenshot 2024-02-21 at 4 35 28 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/0c561109-1eed-417e-8462-12feab8c67dd">
 
-After setting up a notification handler, I wrote a loop to get the current time from the Artemis and sent it to the notification handler. After collecting some values, I was able to calculate how fast the messages could be sent by:
+After setting up a notification handler, I then tested it by instead collecting time in a loop for a couple seconds and then sending that from the Artemis to the computer. I used the datetime package in Python to determine the timestamps of when my computer received the data. From this, I was able to calculate a data transfer rate of 5e7 bytes per second.
 
-Thus, the effective data transfer rate was:
+Now, I tested another method of sending data where the data would be added to a global array in the Arduino IDE and then another function ("SEND_TIME_DATA") would send this data to the computer. I was initially running into a lot of issues with being able to create an array of times but not being able to send them via the notification handler. After debugging via Serial.print() statements, I realized that this was because I needed a delay in my loop (the data was being sent too fast), and this allowed me to then see the data saved into a list in my Python file as well.
+
+<img width="514" alt="Screenshot 2024-02-21 at 5 32 35 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/b6436d14-341f-4e71-bb9a-17aaba499d8b">
+
+<img width="424" alt="Screenshot 2024-02-21 at 5 32 58 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/afe12097-67e3-40e7-8881-716798a587cf">
+
+
+<img width="715" alt="Screenshot 2024-02-21 at 5 32 46 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/94193b39-e085-485a-9291-14f31c511bba">
 
 Now that I could receive time stamps for data, the next step was to create an identically-sized array that would collect temperature readings (as done in Lab 1 (Part A)). It was important that the timestamp in the first array would correspond to the temperature reading taken at that time.
 
+<img width="500" alt="Screenshot 2024-02-21 at 5 43 07 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/3567bb13-923d-414e-9aca-5d6be7590aa5">
+
 I then added a command GET_TEMP_READINGS that looped through both arrays and sent the temperature readings with a timestamp (which the notification handler then took and added to two lists).
 
-In terms of the 
+<img width="518" alt="Screenshot 2024-02-21 at 5 43 21 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/1968f747-9c18-4f6c-9896-e5b7377a56fc">
+
+<img width="792" alt="Screenshot 2024-02-21 at 5 42 34 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/165e9c09-0b87-47da-914f-545d2ff41635">
 
 5. Discussion
 
