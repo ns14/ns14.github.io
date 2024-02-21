@@ -5,10 +5,7 @@
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink.
 
 
-
-https://github.com/ns14/ns14.github.io/assets/65001356/dc0bd0c3-23ec-4e27-b7da-248fdbd20016
-
-
+[![Watch the video]](https://youtube.com/shorts/4v8mXhxNEKk?feature=share)
 
 Following this, I followed the Example: Serial. This allowed me to type in character inputs and then receive those same character outputs in the Serial monitor. This would be useful for later parts of the lab when I would need to use the Serial monitor.
 
