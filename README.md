@@ -4,6 +4,12 @@
 
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink.
 
+
+
+https://github.com/ns14/ns14.github.io/assets/65001356/b2e8661c-c586-4d33-873f-9f9689c8d209
+
+
+
 Following this, I followed the Example: Serial. This allowed me to type in character inputs and then receive those same character outputs in the Serial monitor. This would be useful for later parts of the lab when I would need to use the Serial monitor.
 
 Then, I tested the sensors on the Artemis. The first sensor was tested using Example2_analogRead which was the temperature sensor. As can be seen in the video, as I pressed onto the sensor (to warm it up), the temperature reading in the Serial monitor increased. As I waved the sensor around (i.e. causing it to cool down with the cool air), the temperature reading in the Serial monitor decreased.
