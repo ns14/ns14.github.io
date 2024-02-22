@@ -119,3 +119,5 @@ As the cutoff frequency increases, the alpha increases in the low pass filter, s
 <img width="459" alt="Screenshot 2024-02-22 at 2 19 59 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/29f8942b-0e35-4700-a895-0f722eeb8aa7">
 
 It seems that the accelerometer to begin with did not have too much noise (after looking into it, I found that this was because there was already a low pass filter implemented into the accelerometer).
+
+
