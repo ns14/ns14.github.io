@@ -1,4 +1,6 @@
-Hi! My name is Nidhi Sonwalkar, and I am a first-semester senior studying mechanical and aerospace engineering.
+# Nidhi Sonwalkar
+
+Hi! My name is Nidhi, and I am a first-semester senior studying mechanical and aerospace engineering.
 
 ## Labs
 
