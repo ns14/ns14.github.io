@@ -2,7 +2,7 @@
 
 Step 1 in Lab 2 was to install the SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library, connect the IMU to the Artemis board using QWIIC cable, and run Example1_Basics to see if the IMU could send data to the Serial monitor. Here is an image of my IMU being connected to the Artemis board:
 
-<img width="339" alt="Screenshot 2024-02-22 at 2 26 15 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/4f780437-6a62-4b6c-b142-7bf52eafe1d1">
+<img width="500" alt="Screenshot 2024-02-22 at 2 26 15 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/4f780437-6a62-4b6c-b142-7bf52eafe1d1">
 
 I was able to do connect the IMU successfully but found that the data was not being sent. This was because by AD0_VAL was set to 1 instead of 0. This was necessary to change to 0 because the ADR jumper was soldered together (after reading up on this online, I found that AD0_VAL is the last bit of the I2C address and that when the ADR jumper is closed, this value is 1).
 
