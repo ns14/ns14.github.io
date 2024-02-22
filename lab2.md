@@ -2,11 +2,11 @@
 
 Step 1 in Lab 2 was to install the SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library, connect the IMU to the Artemis board using QWIIC cable, and run Example1_Basics to see if the IMU could send data to the Serial monitor. Here is an image of my IMU being connected to the Artemis board:
 
-![IMG_1997 2](https://github.com/ns14/ns14.github.io/assets/65001356/60f0c3a2-9cc9-4a0a-896c-70a2daa5aa3d)
+<img width="339" alt="Screenshot 2024-02-22 at 2 26 15 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/4f780437-6a62-4b6c-b142-7bf52eafe1d1">
 
 I was able to do connect the IMU successfully but found that the data was not being sent. This was because by AD0_VAL was set to 1 instead of 0. This was necessary to change to 0 because the ADR jumper was soldered together (after reading up on this online, I found that AD0_VAL is the last bit of the I2C address and that when the ADR jumper is closed, this value is 1).
 
-<img width="761" alt="Screenshot 2024-02-22 at 11 46 21 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5324a0a3-96b1-4295-90ee-8fda79a4c00a">
+<img width="400" alt="Screenshot 2024-02-22 at 11 46 21 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5324a0a3-96b1-4295-90ee-8fda79a4c00a">
 
 
 Next, I explored how accelerating the IMU would affect the accelerometer and gyroscope readings:
@@ -23,7 +23,7 @@ I then added a visual indication of the LED blinking three times on startup to i
 
 In order to convert the accelerometer data into pitch and roll, I used the equations from class. Here, it was important that I used atan2() instead of atan() to ensure that the output would be between [-90, 90] (i.e. the correct quadrants were being used while receiving the roll and pitch data).
 
-<img width="417" alt="Screenshot 2024-02-22 at 11 53 04 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/ff7bad80-1653-4e05-a416-58bf63ea3bc0">
+<img width="438" alt="Screenshot 2024-02-22 at 2 24 43 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5815c4c8-c6aa-4173-a48c-cbf9e3dcf501">
 
 When testing {-90, 0, 90} degrees for the roll and pitch by setting my accelerometer against a flat edge, I got these values calculated for the roll and pitch. As can be seen, the values were largely accurate except as they got closer to -90 degrees and 90 degrees. I think this is because the table I was using has a slight curvature to it, so the accelerometer wasn't entirely flush with the table. Also, because of the sensors and connections on the accelerometer, it was hard to lay it exactly flat onto a surface (also because the connectors were twisted), so there may have been error in simply experimentation there as well that decreased the accuracy in the measurements). The values below show the measurements I got for roll and pitch at -90, 0, and 90 degrees where I paid attention to making the IMU as flush with a flat surface as possible.
 
@@ -80,7 +80,6 @@ CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + Referen
 
 As can be seen, the roll seems to have more accuracy than the pitch in terms of the range being closer to [-90, 90].
 
-
 Next, I worked on determining how much noise existed in the accelerometer data. I initially had left the accelerometer steady and tried to conduct the Fourier transform of that data. However, after talking with my classmate, Stephan Wagner, I noticed that this would not allow me to extract a frequency of my accelerometer signal. My Fourier transform was showing a peak amplitude at the value of 0 Hz (because my accelerometer was stationary). To fix this, I then recollected data by moving my accelerometer sinusoidally (i.e. rolling/pitching/tilting it back and forth at an approximately constant frequency) and with vibrational noise.
 
 The original data plotted looks as such (not entirely sinusoidal but moving):
@@ -104,11 +103,11 @@ The data I used for this analysis included noise coming from me introducing vibr
 
 After trying the filter, I found that pretty much all the data was being filtered as can be seen in the screenshot below.
 
-<img width="391" alt="Screenshot 2024-02-22 at 1 48 01 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/16873396-6dbc-465c-892f-ef812880362a">
+<img width="437" alt="Screenshot 2024-02-22 at 1 48 01 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/16873396-6dbc-465c-892f-ef812880362a">
 
 I realized this was because in my filter, I was replacing the previous data meaning the filter ended up calculating zero for each consecutive data point. After changing this, I was able to generate data that seemed to make more sense in terms of being filtered:
 
-<img width="510" alt="Screenshot 2024-02-22 at 1 54 33 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/b0b1e2aa-028b-4bcd-aac8-a5ccb6d01302">
+<img width="435" alt="Screenshot 2024-02-22 at 1 54 33 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/b0b1e2aa-028b-4bcd-aac8-a5ccb6d01302">
 
 With an alpha of 0.10, these were the results of the data (as can be seen, the noise has decreased).
 <img width="437" alt="Screenshot 2024-02-22 at 2 09 56 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/dfa32050-345c-47c0-afa6-bf4ef01bc2c6">
