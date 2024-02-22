@@ -1,42 +1,124 @@
 # Lab 2:
 
-Step 1 in Lab 2 was to install the SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library, connect the IMU to the Artemis board using QWIIC cable, and run Example1_Basics to see if the IMU could send data to the Serial monitor.
+Step 1 in Lab 2 was to install the SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library, connect the IMU to the Artemis board using QWIIC cable, and run Example1_Basics to see if the IMU could send data to the Serial monitor. Here is an image of my IMU being connected to the Artemis board:
 
-I was able to do this successfully but found that the data was not being sent. This was because by AD0_VAL was set to 1 instead of 0. This was necessary to change because.
+![IMG_1997 2](https://github.com/ns14/ns14.github.io/assets/65001356/60f0c3a2-9cc9-4a0a-896c-70a2daa5aa3d)
 
-Exploring how the accelerometer and gyroscope data changed as I rotated, flipped, and accelerated the 
+I was able to do connect the IMU successfully but found that the data was not being sent. This was because by AD0_VAL was set to 1 instead of 0. This was necessary to change to 0 because the ADR jumper was soldered together (after reading up on this online, I found that AD0_VAL is the last bit of the I2C address and that when the ADR jumper is closed, this value is 1).
+
+<img width="761" alt="Screenshot 2024-02-22 at 11 46 21 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5324a0a3-96b1-4295-90ee-8fda79a4c00a">
+
+
+Next, I explored how accelerating the IMU would affect the accelerometer and gyroscope readings:
+
+<insert video here>
+
+After playing around with moving the IMU, I found that the gyroscope (measuring angular velocity) would read a value anytime the IMU was rotating whereas the accelerometer would read values where the IMU was translationally moving. The gyroscope would pick up on some angular velocity even when the IMU was "translationally" moving because I realized that I had held it up in the air causing some angular velocity as well in the sensor. The magnetometer values remained largely constant (and very small) as I was moving my board around.
+
+I was initially confused as to why there was a separate "scaled accelerometer" reading and how that value differed from the raw accelerometer reading. After looking through the example code, I found that this was because this data was taken relative to g which would be important when I was calculating my pitch and roll later in the lab.
 
 I then added a visual indication of the LED blinking three times on startup to indicate when the IMU would start collecting data for the rest of the lab.
 
+<insert video here>
+
 In order to convert the accelerometer data into pitch and roll, I used the equations from class. Here, it was important that I used atan2() instead of atan() to ensure that the output would be between [-90, 90] (i.e. the correct quadrants were being used while receiving the roll and pitch data).
 
-My data seemed fairly accurate with not too much drift as I was, on average, approximately 0.001 off from -90, 0, and 90. I used two-point calibration to detetrmine a conversion factor to ensure that the final output matched the expected output.
+<img width="417" alt="Screenshot 2024-02-22 at 11 53 04 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/ff7bad80-1653-4e05-a416-58bf63ea3bc0">
+
+When testing {-90, 0, 90} degrees for the roll and pitch by setting my accelerometer against a flat edge, I got these values calculated for the roll and pitch. As can be seen, the values were largely accurate except as they got closer to -90 degrees and 90 degrees. I think this is because the table I was using has a slight curvature to it, so the accelerometer wasn't entirely flush with the table. Also, because of the sensors and connections on the accelerometer, it was hard to lay it exactly flat onto a surface (also because the connectors were twisted), so there may have been error in simply experimentation there as well that decreased the accuracy in the measurements). The values below show the measurements I got for roll and pitch at -90, 0, and 90 degrees where I paid attention to making the IMU as flush with a flat surface as possible.
+
+Roll = -90 degrees:
+
+![IMG_2E3BDD5411F4-1](https://github.com/ns14/ns14.github.io/assets/65001356/c71b48a6-769b-4e87-84f2-14c6db915e9f)
 
 
-Next, I worked on deciding how much noise existed in the accelerometer data. I initially had left the accelerometer steady and tried to conduct the Fourier transform of that data. However, after talking with my classmate, Stephan Wagner, I noticed that this would not allow me to extract a frequency of my accelerometer signal. My Fourier transform was showing a peak amplitude at the value of 0 Hz (because my accelerometer was stationary). To fix this, I then instead recollected data by moving my accelerometer sinusoidally (i.e. rolling/pitching/tilting it back and forth at an approximately constant frequency).
+Roll = 0 degrees:
 
-After recollecting the data, I then 
+![IMG_BC7D9571ECA9-1](https://github.com/ns14/ns14.github.io/assets/65001356/c38d8441-e438-4689-9ad5-504b049d491b)
+
+Roll = 90 degrees:
+
+![IMG_0C6054F7EDAE-1](https://github.com/ns14/ns14.github.io/assets/65001356/5959071a-9ee4-4348-9bd2-abe599c320a4)
 
 
-Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink on and off which is useful in the future to denote when the Artemis is on (such as on boot up).
+Pitch = -90 degrees:
 
-<iframe width="315" height="560"
-src="https://youtube.com/embed/WW7X_P9v2Ms?feature=shared"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
+![IMG_58DFBC26E784-1](https://github.com/ns14/ns14.github.io/assets/65001356/2bdea718-ec1f-4055-8464-f1340fbef07e)
 
-Following this, I followed the Example: Serial. This allowed me to type in character inputs and then receive those same character outputs in the Serial monitor. This would be useful for later parts of the lab when I would need to use the Serial monitor to receive temperature readings from the board.
+Pitch = 0 degrees:
 
-<iframe width="315" height="560" src="https://youtube.com/embed/iQT44lFqC1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+![IMG_6E03CE503971-1](https://github.com/ns14/ns14.github.io/assets/65001356/bbc6f95a-0c2c-4e32-92c5-71a433f42637)
 
-The first sensor was tested using Example2_analogRead which was the temperature sensor. As can be seen in the video, as I pressed onto the sensor (to warm it up), the temperature reading in the Serial monitor increased. As I waved the sensor around (i.e. causing it to cool down with the cool air), the temperature reading in the Serial monitor decreased.
 
-<iframe width="315" height="560" src="https://youtube.com/embed/iQT44lFqC1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
+Pitch = 90 degrees:
 
-Lastly, I tested the microphone using Example1_MicrophoneOutput. I used an online note player to see how the frequency of the sound would change. I also then used a music video to see how the microphone would return frequencies that had a lot of noise. It was interesting to see that the microphone was able to discern out the highest frequency noises from the jazz music which actually consisted of a medley of frequencies.
+![IMG_A73E73408BF8-1](https://github.com/ns14/ns14.github.io/assets/65001356/da790cd3-a8b6-4e12-b938-0cc005056735)
 
-<iframe width="315" height="560" src="https://youtube.com/embed/DXHieDjCzVo?feature=shared" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
+My data seemed fairly accurate with not too much drift as I was, on average, approximately an order of magnitude of about 10 thou  off from -90, 0, and 90. I used two-point calibration to detetrmine a conversion factor to ensure that the final output matched the expected output. I used the following methodology regarding calibrating sensors from Adafruit to determine the conversion factor:
 
-<iframe width="315" height="560" src="https://youtube.com/embed/P9mhESTJ3GM?feature=shared" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
+<img width="664" alt="Screenshot 2024-02-22 at 12 05 11 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/7c7e20dc-63de-4bc8-aa21-d2436f24bd96">
+
+
+Roll:
+
+Reference Range = 90 - -90 = 180
+Raw Range = 89.8 - -89.5 = 179.3
+
+CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow = 
+
+**CorrectedValue = (((RawValue + 89.5) * 180) / 179.3) + (-90)**
+
+
+Pitch:
+
+Reference Range = 90 - -90 = 180
+Raw Range = 90.2 - -85.4 = 175.6
+
+CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow = 
+
+**CorrectedValue = (((RawValue + 85.4) * 180) / 175.6) + (-90)**
+
+As can be seen, the roll seems to have more accuracy than the pitch in terms of the range being closer to [-90, 90].
+
+
+Next, I worked on determining how much noise existed in the accelerometer data. I initially had left the accelerometer steady and tried to conduct the Fourier transform of that data. However, after talking with my classmate, Stephan Wagner, I noticed that this would not allow me to extract a frequency of my accelerometer signal. My Fourier transform was showing a peak amplitude at the value of 0 Hz (because my accelerometer was stationary). To fix this, I then recollected data by moving my accelerometer sinusoidally (i.e. rolling/pitching/tilting it back and forth at an approximately constant frequency) and with vibrational noise.
+
+The original data plotted looks as such (not entirely sinusoidal but moving):
+
+<img width="458" alt="Screenshot 2024-02-22 at 1 22 53 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/7ed3fb71-29ec-40db-bb3f-8b9eaf2993f4">
+
+I then conducted a Fourier Transform on the data.
+
+Roll:
+
+<img width="438" alt="Screenshot 2024-02-22 at 1 24 50 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/da015cc7-5ef9-4c5e-b5c5-aa4f08e2aa9c">
+
+Pitch:
+
+<img width="446" alt="Screenshot 2024-02-22 at 1 25 07 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5d567ff2-5d47-4fee-ac5f-1fc592eee1ec">
+
+As can be seen, largely, the amplitude is found at lower frequencies as opposed to higher ones. I had a sampling frequency of about 414 data points per second (based on time stamps I had while collecting the accelerometer data). I chose a cut off frequency of around 2 Hz because I didn't seem to have too much noise past 2 Hz. I used an alpha for my low pass filter to be around 0.61 (first, I tried with a lower frequency of 0.10).
+
+
+The data I used for this analysis included noise coming from me introducing vibrational noise as well by inducing light shaking when I was collecting the data).
+
+After trying the filter, I found that pretty much all the data was being filtered as can be seen in the screenshot below.
+
+<img width="391" alt="Screenshot 2024-02-22 at 1 48 01 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/16873396-6dbc-465c-892f-ef812880362a">
+
+I realized this was because in my filter, I was replacing the previous data meaning the filter ended up calculating zero for each consecutive data point. After changing this, I was able to generate data that seemed to make more sense in terms of being filtered:
+
+<img width="510" alt="Screenshot 2024-02-22 at 1 54 33 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/b0b1e2aa-028b-4bcd-aac8-a5ccb6d01302">
+
+With an alpha of 0.10, these were the results of the data (as can be seen, the noise has decreased).
+<img width="437" alt="Screenshot 2024-02-22 at 2 09 56 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/dfa32050-345c-47c0-afa6-bf4ef01bc2c6">
+
+<img width="435" alt="Screenshot 2024-02-22 at 2 10 08 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/f5203cc7-e415-49fb-8c58-90ef7f03c15e">
+
+As the cutoff frequency increases, the alpha increases in the low pass filter, so I then tried increasing my cutoff frequency to the original 0.61 that I had calculated (i.e. this would increase how much past measurements affected future measurements through the smoothing factor alpha). Because alpha increased, we can see that it largely mimics the original data without reducing noise too much, so a lower alpha value would be desirable for the filter.
+
+<img width="446" alt="Screenshot 2024-02-22 at 2 19 48 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/ffd9038f-e920-4e9b-86d4-3db5f5d7c65f">
+
+<img width="459" alt="Screenshot 2024-02-22 at 2 19 59 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/29f8942b-0e35-4700-a895-0f722eeb8aa7">
+
+It seems that the accelerometer to begin with did not have too much noise (after looking into it, I found that this was because there was already a low pass filter implemented into the accelerometer).
