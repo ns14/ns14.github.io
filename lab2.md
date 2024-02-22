@@ -29,30 +29,28 @@ When testing {-90, 0, 90} degrees for the roll and pitch by setting my accelerom
 
 Roll = -90 degrees:
 
-![IMG_2E3BDD5411F4-1](https://github.com/ns14/ns14.github.io/assets/65001356/c71b48a6-769b-4e87-84f2-14c6db915e9f)
+<img width="303" alt="Screenshot 2024-02-22 at 2 29 04 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/33695187-60ca-42de-ae4e-61babacab655">
 
 
 Roll = 0 degrees:
 
-![IMG_BC7D9571ECA9-1](https://github.com/ns14/ns14.github.io/assets/65001356/c38d8441-e438-4689-9ad5-504b049d491b)
+<img width="339" alt="Screenshot 2024-02-22 at 2 29 17 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/0f25f773-03b3-410f-a4d1-1bf532a60521">
 
 Roll = 90 degrees:
 
-![IMG_0C6054F7EDAE-1](https://github.com/ns14/ns14.github.io/assets/65001356/5959071a-9ee4-4348-9bd2-abe599c320a4)
-
+<img width="327" alt="Screenshot 2024-02-22 at 2 29 34 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/3f325fc0-6d3b-4571-a1eb-1879ba309576">
 
 Pitch = -90 degrees:
 
-![IMG_58DFBC26E784-1](https://github.com/ns14/ns14.github.io/assets/65001356/2bdea718-ec1f-4055-8464-f1340fbef07e)
+<img width="292" alt="Screenshot 2024-02-22 at 2 29 49 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/a4e97230-26c8-47ca-a505-005e6d842df4">
 
 Pitch = 0 degrees:
 
-![IMG_6E03CE503971-1](https://github.com/ns14/ns14.github.io/assets/65001356/bbc6f95a-0c2c-4e32-92c5-71a433f42637)
-
+<img width="293" alt="Screenshot 2024-02-22 at 2 30 07 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/73141f0e-aed2-4d9b-a773-925b9885a282">
 
 Pitch = 90 degrees:
 
-![IMG_A73E73408BF8-1](https://github.com/ns14/ns14.github.io/assets/65001356/da790cd3-a8b6-4e12-b938-0cc005056735)
+<img width="133" alt="Screenshot 2024-02-22 at 2 30 19 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/a06f38a8-b3de-44aa-980d-1dd6b8553cc5">
 
 My data seemed fairly accurate with not too much drift as I was, on average, approximately an order of magnitude of about 10 thou  off from -90, 0, and 90. I used two-point calibration to detetrmine a conversion factor to ensure that the final output matched the expected output. I used the following methodology regarding calibrating sensors from Adafruit to determine the conversion factor:
 
