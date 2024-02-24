@@ -120,4 +120,12 @@ As the cutoff frequency increases, the alpha increases in the low pass filter, s
 
 It seems that the accelerometer to begin with did not have too much noise (after looking into it, I found that this was because there was already a low pass filter implemented into the accelerometer).
 
+Next, I started exploring working with the gyroscope. I was able to calculate roll, pitch, and yaw from the gyroscoope readings by using the following equations (in code) that we had learned in class. Because the gyroscope measures angular velocity, I would have to calculate some dt that I could use to discretely integrate the gyroscope velocity and add to the previous roll, pitch, and yaw. The gyroscope values for roll and pitch (and yaw) seem to drift more than the accelerometer although they are less noisy.
+
+<img width="321" alt="Screenshot 2024-02-23 at 7 18 21 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/8fbf3203-b49c-4712-bdcd-cbf90f6eefc5">
+
+
+
+
+
 
