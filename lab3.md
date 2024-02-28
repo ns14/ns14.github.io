@@ -8,7 +8,7 @@ I plan on placing the TOF sensors on opposite ends of the car for detection on e
 
 Thinking ahead about the wiring, the following shows what I expect my wiring to look like in lab:
 
-<wiring diagram image here>
+<img width="965" alt="Screenshot 2024-02-28 at 11 39 49 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5c09dbbb-8c84-4436-998d-084252dcf366">
 
 I will try to make all the sensors (IMU/TOF) detachable so that I can move them around as needed (the soldered connection for one TOF's XSHUT pin will be permanently soldered). I use the longer QWIIC connectors for the TOF sensors because I am trying to put them on opposite sides of the robot whereas the IMU can pretty much go "anywhere" in terms of not needing to detect obstacles on the outside of the robot. The XSHUT pin of one TOF also needs to connect to the Artemis, so I need to solder on a pretty long wire onto one TOF sensor's XSHUT pins to the Artemis' GPIO pin. Because the TOF sensors face outwards, I will solder the wires from the back so that they are not sticking out the side that has the sensor and possibly interfere with it.
 
