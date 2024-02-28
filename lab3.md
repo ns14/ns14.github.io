@@ -21,7 +21,12 @@ First, I soldered the battery wires to the JST jumper wires. To test that I sold
 
 <img width="819" alt="Screenshot 2024-02-28 at 8 28 17 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/88b64b2f-601d-44b8-bb0e-1251661a6cc2">
 
-[<insert video here>](https://www.youtube.com/watch?v=EXYS9i2Z2SM)
+<iframe width="315" height="560"
+src="https://www.youtube.com/watch?v=EXYS9i2Z2SM"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 ## Connecting one TOF Sensor
 
