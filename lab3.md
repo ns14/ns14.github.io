@@ -80,7 +80,25 @@ Now that I had data about one TOF sensor, I used connected both sensors to the A
 
 <img width="456" alt="Screenshot 2024-02-28 at 10 22 02 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/179f34b4-96de-45ad-a8bb-fd5b6843f344">
 
-I connected the XSHUT pin of one sensor to a GPIO pin on the Artemis to ensure that different I2C addresses would be used for both TOF sensors.
+I connected the XSHUT pin of one sensor to a GPIO pin on the Artemis to ensure that different I2C addresses would be used for both TOF sensors (I used .setI2CAddress() to change the I2C address of one of the sensors). I then was able to get distance readings from both TOF sensors:
+
+<img width="479" alt="Screenshot 2024-02-28 at 10 51 50 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/97a13fb1-fe60-4fa3-b777-2a2315e93ece">
+
+## Execution Time
+
+Because in future labs, the code needs to execute quickly, I added continuous timestamps to my code and printed new data only when available. The code snippet is shown below:
+
+<img width="261" alt="Screenshot 2024-02-28 at 11 07 52 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/fe87494b-017f-431e-a635-fee62cba4ccd">
+
+From the timestamps, it seems that the loop executes about every 7 milliseconds, but the TOF sensors' data is sent every 103 milliseconds. Possible limiting factors are that there is some time in between for the data to be read and then written or that the data is simply not available everytime through the loop (due to the checkForDataReady() if statement).
+
+<img width="487" alt="Screenshot 2024-02-28 at 11 08 19 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/e5bc22b5-9505-46e7-ac5c-d348fbde02eb">
+
+## Record Time and Send Via Bluetooth To Computer
+
+Lastly, I merged my previous labs' code to this lab's code and was able to send the data of both TOF sensors via Bluetooth to my computer. The graph of this data is shown below:
+
+
 
 
 
