@@ -37,25 +37,31 @@ Roll = -90 degrees:
 
 <img width="303" alt="Screenshot 2024-02-22 at 2 29 04 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/33695187-60ca-42de-ae4e-61babacab655">
 
+
 Roll = 0 degrees:
 
 <img width="339" alt="Screenshot 2024-02-22 at 2 29 17 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/0f25f773-03b3-410f-a4d1-1bf532a60521">
+
 
 Roll = 90 degrees:
 
 <img width="327" alt="Screenshot 2024-02-22 at 2 29 34 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/3f325fc0-6d3b-4571-a1eb-1879ba309576">
 
+
 Pitch = -90 degrees:
 
 <img width="292" alt="Screenshot 2024-02-22 at 2 29 49 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/a4e97230-26c8-47ca-a505-005e6d842df4">
+
 
 Pitch = 0 degrees:
 
 <img width="293" alt="Screenshot 2024-02-22 at 2 30 07 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/73141f0e-aed2-4d9b-a773-925b9885a282">
 
+
 Pitch = 90 degrees:
 
 <img width="133" alt="Screenshot 2024-02-22 at 2 30 19 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/a06f38a8-b3de-44aa-980d-1dd6b8553cc5">
+
 
 ## Accelerometer Calibration
 
@@ -65,21 +71,24 @@ My data seemed fairly accurate with not too much drift as I was, on average, app
 
 Roll:
 
+
 Reference Range = 90 - -90 = 180
+
 Raw Range = 89.8 - -89.5 = 179.3
 
-CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow = 
 
-**CorrectedValue = (((RawValue + 89.5) * 180) / 179.3) + (-90)**
+CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow =   
 
-Pitch:
+CorrectedValue = (((RawValue + 89.5) * 180) / 179.3) + (-90)  
 
-Reference Range = 90 - -90 = 180
-Raw Range = 90.2 - -85.4 = 175.6
+Pitch:  
 
-CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow = 
+Reference Range = 90 - -90 = 180  
+Raw Range = 90.2 - -85.4 = 175.6  
 
-**CorrectedValue = (((RawValue + 85.4) * 180) / 175.6) + (-90)**
+CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow =   
+
+**CorrectedValue = (((RawValue + 85.4) * 180) / 175.6) + (-90)**  
 
 As can be seen, the roll seems to have more accuracy than the pitch in terms of the range being closer to [-90, 90].
 
