@@ -1,5 +1,6 @@
 # Lab 2:
 
+## Setup IMU
 Step 1 in Lab 2 was to install the SparkFun 9DOF IMU Breakout - ICM 20948 - Arduino Library, connect the IMU to the Artemis board using QWIIC cable, and run Example1_Basics to see if the IMU could send data to the Serial monitor. Here is an image of my IMU being connected to the Artemis board:
 
 <img width="500" alt="Screenshot 2024-02-22 at 2 26 15 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/4f780437-6a62-4b6c-b142-7bf52eafe1d1">
@@ -7,6 +8,8 @@ Step 1 in Lab 2 was to install the SparkFun 9DOF IMU Breakout - ICM 20948 - Ardu
 I was able to do connect the IMU successfully but found that the data was not being sent. This was because by AD0_VAL was set to 1 instead of 0. This was necessary to change to 0 because the ADR jumper was soldered together (after reading up on this online, I found that AD0_VAL is the last bit of the I2C address and that when the ADR jumper is closed, this value is 1).
 
 <img width="400" alt="Screenshot 2024-02-22 at 11 46 21 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5324a0a3-96b1-4295-90ee-8fda79a4c00a">
+
+## Analyzing Accelerometer and Gyroscope Data
 
 
 Next, I explored how accelerating the IMU would affect the accelerometer and gyroscope readings:
@@ -17,9 +20,13 @@ After playing around with moving the IMU, I found that the gyroscope (measuring 
 
 I was initially confused as to why there was a separate "scaled accelerometer" reading and how that value differed from the raw accelerometer reading. After looking through the example code, I found that this was because this data was taken relative to g which would be important when I was calculating my pitch and roll later in the lab.
 
+## Adding visual indication of LED blinking
+
 I then added a visual indication of the LED blinking three times on startup to indicate when the IMU would start collecting data for the rest of the lab.
 
 <insert video here>
+
+## Accelerometer Data
 
 In order to convert the accelerometer data into pitch and roll, I used the equations from class. Here, it was important that I used atan2() instead of atan() to ensure that the output would be between [-90, 90] (i.e. the correct quadrants were being used while receiving the roll and pitch data).
 
@@ -52,10 +59,11 @@ Pitch = 90 degrees:
 
 <img width="133" alt="Screenshot 2024-02-22 at 2 30 19 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/a06f38a8-b3de-44aa-980d-1dd6b8553cc5">
 
-My data seemed fairly accurate with not too much drift as I was, on average, approximately an order of magnitude of about 10 thou  off from -90, 0, and 90. I used two-point calibration to detetrmine a conversion factor to ensure that the final output matched the expected output. I used the following methodology regarding calibrating sensors from Adafruit to determine the conversion factor:
+## Accelerometer Calibration
+
+My data seemed fairly accurate with not too much drift as I was, on average, approximately an order of magnitude of about 10 thou off from -90, 0, and 90. I used two-point calibration to detetrmine a conversion factor to ensure that the final output matched the expected output. I used the following methodology regarding calibrating sensors from Adafruit to determine the conversion factor:
 
 <img width="664" alt="Screenshot 2024-02-22 at 12 05 11 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/7c7e20dc-63de-4bc8-aa21-d2436f24bd96">
-
 
 Roll:
 
@@ -65,7 +73,6 @@ Raw Range = 89.8 - -89.5 = 179.3
 CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + ReferenceLow = 
 
 **CorrectedValue = (((RawValue + 89.5) * 180) / 179.3) + (-90)**
-
 
 Pitch:
 
@@ -77,6 +84,8 @@ CorrectedValue = (((RawValue – RawLow) * ReferenceRange) / RawRange) + Referen
 **CorrectedValue = (((RawValue + 85.4) * 180) / 175.6) + (-90)**
 
 As can be seen, the roll seems to have more accuracy than the pitch in terms of the range being closer to [-90, 90].
+
+## Accelerometer Noise
 
 Next, I worked on determining how much noise existed in the accelerometer data. I initially had left the accelerometer steady and tried to conduct the Fourier transform of that data. However, after talking with my classmate, Stephan Wagner, I noticed that this would not allow me to extract a frequency of my accelerometer signal. My Fourier transform was showing a peak amplitude at the value of 0 Hz (because my accelerometer was stationary). To fix this, I then recollected data by moving my accelerometer sinusoidally (i.e. rolling/pitching/tilting it back and forth at an approximately constant frequency) and with vibrational noise.
 
@@ -94,8 +103,9 @@ Pitch:
 
 <img width="446" alt="Screenshot 2024-02-22 at 1 25 07 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5d567ff2-5d47-4fee-ac5f-1fc592eee1ec">
 
-As can be seen, largely, the amplitude is found at lower frequencies as opposed to higher ones. I had a sampling frequency of about 414 data points per second (based on time stamps I had while collecting the accelerometer data). I chose a cut off frequency of around 2 Hz because I didn't seem to have too much noise past 2 Hz. I used an alpha for my low pass filter to be around 0.61 (first, I tried with a lower frequency of 0.10).
+## Accelerometer Lowpass Filter
 
+As can be seen, largely, the amplitude is found at lower frequencies as opposed to higher ones. I had a sampling frequency of about 414 data points per second (based on time stamps I had while collecting the accelerometer data). I chose a cut off frequency of around 2 Hz because I didn't seem to have too much noise past 2 Hz. I used an alpha for my low pass filter to be around 0.61 (first, I tried with a lower frequency of 0.10).
 
 The data I used for this analysis included noise coming from me introducing vibrational noise as well by inducing light shaking when I was collecting the data).
 
@@ -120,10 +130,19 @@ As the cutoff frequency increases, the alpha increases in the low pass filter, s
 
 It seems that the accelerometer to begin with did not have too much noise (after looking into it, I found that this was because there was already a low pass filter implemented into the accelerometer).
 
+## Gyroscope Data
+
 Next, I started exploring working with the gyroscope. I was able to calculate roll, pitch, and yaw from the gyroscoope readings by using the following equations (in code) that we had learned in class. Because the gyroscope measures angular velocity, I would have to calculate some dt that I could use to discretely integrate the gyroscope velocity and add to the previous roll, pitch, and yaw. The gyroscope values for roll and pitch (and yaw) seem to drift more than the accelerometer although they are less noisy.
 
 <img width="321" alt="Screenshot 2024-02-23 at 7 18 21 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/8fbf3203-b49c-4712-bdcd-cbf90f6eefc5">
 
+## Gyroscope Complimentary Filter
+
+## Speed Up Data
+
+## Store Data
+
+## Data Sent Via BlueTooth
 
 
 
