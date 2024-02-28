@@ -94,9 +94,12 @@ From the timestamps, it seems that the loop executes about every 7 milliseconds,
 
 <img width="487" alt="Screenshot 2024-02-28 at 11 08 19 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/e5bc22b5-9505-46e7-ac5c-d348fbde02eb">
 
-## Record Time and Send Via Bluetooth To Computer
+## Record Time and Send Data To Computer
 
-Lastly, I merged my previous labs' code to this lab's code and was able to send the data of both TOF sensors via Bluetooth to my computer. The graph of this data is shown below:
+Lastly, I merged my previous labs' code to this lab's code and was able to send the data of both TOF sensors to my computer. The graph of this data is shown below:
+
+<img width="493" alt="Screenshot 2024-02-28 at 11 27 11 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/922436e1-7f7f-4c50-a72c-4454ede5d680">
+
 
 
 
