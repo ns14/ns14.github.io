@@ -1,6 +1,6 @@
 # Lab 3:
 
-## Prelab:
+## Prelab
 
 The default I2C address of the Time of Flight (TOF) sensors is 0x52 according to the datasheet. However, because two TOF sensors are being used, it is necessary to use the XSHUT pin to temporarily shut off one of the sensors so that the I2C address cah be changed of the other sensor (that way both TOF sensors can be communicated with). I decided to choose this method as opposed to shutting down both sensors as there will be no need to have another XSHUT pin wired to the Artemis GPIO keeping wiring management a little more simpler.
 
