@@ -187,7 +187,7 @@ Each of the arrays can take up 1/3 of the data available on the Artemis (given t
 
 Lastly, I worked to send data from the IMU via Bluetooth to my computer as can be seen here:
 
-
+<img width="322" alt="Screenshot 2024-02-28 at 3 59 03 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/7c188606-083d-4e18-bc88-f76b7cb533a8">
 
 ## Record A Stunt
 
