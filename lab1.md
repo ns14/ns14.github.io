@@ -1,4 +1,6 @@
-# Lab 1 (Part A):
+# Lab 1:
+
+## Lab 1 (Part A)
 
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink on and off which is useful in the future to denote when the Artemis is on (such as on boot up).
 
@@ -23,7 +25,7 @@ Lastly, I tested the microphone using Example1_MicrophoneOutput. I used an onlin
 
 <iframe width="315" height="560" src="https://youtube.com/embed/P9mhESTJ3GM?feature=shared" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted media; gyroscope; picture-in-picture; web-share" allowfullscreen> </iframe>
 
-# Lab 1 (Part B):
+## Lab 1 (Part B)
 
 To set up for this lab, it was necessary to create a virtual environment with the correct Python and pip versions. I ran into an issue due to my computer's Python version being 3.8 although we needed above 3.9 for the lab. This is because my Python version was only updated in Anaconda. Because of this, I decided to create a conda environment instead of a venv environment so that I could use more updated versions of Python and pip. To set up my virtual environment, I used the following commands:
 
@@ -57,7 +59,7 @@ To check that the Bluetooth connection was properly established, I ran through d
 
 Check for Understanding: The Bluetooth codebase consists of various scripts that allow a Bluetooth connection to be enabled between the Artemis and my computer. ble_arduino.ino takes care of this from the Artemis side. First, the UUIDs that were generated above help identify types of data that will be sent between the Artemis and my computer. BLEService is then used to set the local name and service, add BLE characteristics, and service. The characteristics are different types of data provided by the ArduinoBLE (in our case, we only use BLECStringCharacteristic). Then, there are functions that can write values from the Artemis to transmit to the computer.
 
-# Lab Tasks
+## Lab Tasks
 
 The first task was to send a String from the computer to the Artemis and then to send an augmented String back from the Artemis to the computer. I was able to accomplish this by using similar logic as the PING case in the code.
 
