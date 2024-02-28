@@ -13,7 +13,7 @@ I was able to do connect the IMU successfully but found that the data was not be
 
 Next, I explored how accelerating the IMU would affect the accelerometer and gyroscope readings:
 
-<insert video here>
+https://www.youtube.com/embed/0JXrrpiR4Oc
 
 After playing around with moving the IMU, I found that the gyroscope (measuring angular velocity) would read a value anytime the IMU was rotating whereas the accelerometer would read values where the IMU was translationally moving. The gyroscope would pick up on some angular velocity even when the IMU was "translationally" moving because I realized that I had held it up in the air causing some angular velocity as well in the sensor. The magnetometer values remained largely constant (and very small) as I was moving my board around.
 
@@ -23,7 +23,7 @@ I was initially confused as to why there was a separate "scaled accelerometer" r
 
 I then added a visual indication of the LED blinking three times on startup to indicate when the IMU would start collecting data for the rest of the lab.
 
-<insert video here>
+https://youtube.com/embed/QKjdkMUVRYQ
 
 ## Accelerometer Data
 
@@ -184,5 +184,5 @@ Lastly, I worked to send data from the IMU via Bluetooth to my computer as can b
 After playing around with the robot, I found that it didn't maintain a very straight line going forward but did backwards; also getting it to turn was pretty straightforwad, and it would maintain its motion in the face of an obstacle until it would turn and then continue. I might need to figure out some way to correct for it not travelling linearly when I work on the motor drivers in future labs.
 
 
-
+https://youtube.com/embed/4fhogKkCdQo
 
