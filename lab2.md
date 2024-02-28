@@ -11,7 +11,6 @@ I was able to do connect the IMU successfully but found that the data was not be
 
 ## Analyzing Accelerometer and Gyroscope Data
 
-
 Next, I explored how accelerating the IMU would affect the accelerometer and gyroscope readings:
 
 <insert video here>
@@ -37,7 +36,6 @@ When testing {-90, 0, 90} degrees for the roll and pitch by setting my accelerom
 Roll = -90 degrees:
 
 <img width="303" alt="Screenshot 2024-02-22 at 2 29 04 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/33695187-60ca-42de-ae4e-61babacab655">
-
 
 Roll = 0 degrees:
 
@@ -143,7 +141,6 @@ Next, I started exploring working with the gyroscope. I was able to calculate ro
 ## Store Data
 
 ## Data Sent Via BlueTooth
-
 
 
 
