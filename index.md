@@ -10,4 +10,4 @@ Hi! My name is Nidhi Sonwalkar, and I am a first-semester senior studying mechan
 - [Lab 1: Setting Up](/lab1)
 - [Lab 2: IMU](/lab2)
 - [Lab 3: TOF](/lab3)
-- [Lab 4: Motor Drivers](/lab4)
+- [Lab 4: Motors](/lab4)
