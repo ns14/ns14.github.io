@@ -8,7 +8,6 @@ To start, I created a command in my switch-case for Bluetooth that would enable 
 
 <img width="248" alt="Screenshot 2024-03-13 at 10 01 23 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/4829769c-d016-4f06-866f-e7a7b3b54c3a">
 
-
 Next, I worked on implementing PID control over a fixed amount of time (I chose 5 seconds based on the pre lab) while storing debugging data in arrays. I had a hard stop implemented directly on the Artemis that would turn off all the motors after 5 seconds of the car running (in case the PID controller failed because I expected it to take a maximum of 5 seconds for it to reach 1 foot away from the wall if it started at the farthest distance of 4 feet).
 
 # Pseudo Control
