@@ -18,24 +18,27 @@ Before starting to implement my PID controller, I wanted to characterize how my 
 
 <img width="279" alt="Screenshot 2024-03-13 at 10 00 48 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/2bb0444f-6268-4c77-ba19-db014627adc6">
 
-Playing around with different obstacles and distances I found that there was a small lag time (as expected) between when the ToF would send distance data back from the Artemis to the computer slightly slower than how fast analogWrite would write the data to the wheels. I also realized that I had a lot of delays/Serial.println() statements that I was using for debugging/proper documentation that was slowing down my loop/effective sensor data rate. Because of this, I started removing some of my delays and removing some of my Serial.println() statements so that the effective data transfer rate from the ToF sensor to my computer would be faster. On the other hand, I also wanted to find out if the 
+Playing around with different obstacles and distances I found that there was a small lag time (as expected) between when the ToF would send distance data back from the Artemis to the computer slightly slower than how fast analogWrite would write the data to the wheels. I also realized that I had a lot of delays/Serial.println() statements that I was using for debugging/proper documentation that was slowing down my loop/effective sensor data rate. Because of this, I started removing some of my delays and removing some of my Serial.println() statements so that the effective data transfer rate from the ToF sensor to my computer would be faster.
 
-Fun things I was exploring:
+# PID Control
 
-I was looking into adaptive control: essentially, changing your controller's gains while the car is running. After talking with Dr. Jaramillo, I noticed that this wouldn't necessarily be useful for our application although what might be useful is using different sensor modalities. This is because different sensors have different modes that can be used depending on the ranging distances of the actual ToF sensor that are needed by the user. So, for example, I found that for the purposes of my ToF sensor, the closer I was getting, I might want a shorter ranging distance mode but as I was further away, I would want a longer ranging distance mode. The tradeoff here comes from having different accuracies; if I change my sensing mode, my sensor readings might become more or less accurate which can also affect how well my robot is working for the purposes of this lab.
+After characterizing the data of the ToF sensors, I then started implementing my PID controller. I started with setting up a framework for my PID controller. As can be seen, there are three gains (proportional, integral, and derivative), and after calculating a delta t and error, the proportional gain is applied to the error, the integral gain is applied to a discretized time step times the error, and the derivative gain is applied to the change in error.
 
-For our purposes, having different sensor ranging modes might be helpful but adaptive control might not necessarily be because these are cheaper, less accurate sensors that we are using on our robot. After speaking with Dr. Jaramillo, where this would be useful would be for the purposes of if we were switching our robot from linoleum to carpet for example where there are different coefficients of friction which would impact how our robot was working. But, because for the most part our robots are going to be run on tile, this isn't a huge issue, and we don't really need adaptive control. It would be pretty fun though to try implementing this for some reason on a robot!!
+<img width="249" alt="Screenshot 2024-03-22 at 1 44 52 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/36d98c11-a2fb-48ce-aee6-1bbd96acfdfc">
 
 # P Control
-
-After characterizing the data of the ToF sensors, I then started implementing my P controller (I started with P control as it would be the easiest to implement, and I could then build on it).
-
-To control it, I started off with a very small gain to see how it would cause my system to react. I chose a KP value of 5. I noticed that this value (as expected) was extremely small and realized I needed to increase my gain for this to work as needed for this lab.
+I first started off with just tuning my proportional gain.
 
 # PI Control
 
 # PID Control
 
 # Extrapolation
+
+Fun things I was exploring:
+
+I was looking into adaptive control: essentially, changing your controller's gains while the car is running. After talking with Dr. Jaramillo, I noticed that this wouldn't necessarily be useful for our application although what might be useful is using different sensor modalities. This is because different sensors have different modes that can be used depending on the ranging distances of the actual ToF sensor that are needed by the user. So, for example, I found that for the purposes of my ToF sensor, the closer I was getting, I might want a shorter ranging distance mode but as I was further away, I would want a longer ranging distance mode. The tradeoff here comes from having different accuracies; if I change my sensing mode, my sensor readings might become more or less accurate which can also affect how well my robot is working for the purposes of this lab.
+
+For our purposes, having different sensor ranging modes might be helpful but adaptive control might not necessarily be because these are cheaper, less accurate sensors that we are using on our robot. After speaking with Dr. Jaramillo, where this would be useful would be for the purposes of if we were switching our robot from linoleum to carpet for example where there are different coefficients of friction which would impact how our robot was working. But, because for the most part our robots are going to be run on tile, this isn't a huge issue, and we don't really need adaptive control. It would be pretty fun though to try implementing this for some reason on a robot!!
 
 
