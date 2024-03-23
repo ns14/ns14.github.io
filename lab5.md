@@ -42,9 +42,14 @@ The motor input values can go from 0 to 255. I decided to use a KP of 0.12. That
 
 So a good range of proportional gains would be from 0.06 to 0.12 because that is the ratio of the full speed to farthest ranging distance of the ToF sensor to the closest one that I plan on testing.
 
-A long ranging mode would be better for the purposes of this because despite the lower accuracy, we want our robot to move at fast speeds, so we want a faster sampling time (20 ms/50 Hz). I also reduced the sensor integration time (to ensure independent measurements) to between 1 and 8.
+A long ranging mode would be better for the purposes of this because despite the lower accuracy, we want our robot to move at fast speeds, so we want a faster sampling time (20 ms/50 Hz). I also reduced the sensor integration time (to ensure independent measurements) to 4 (a value between 1 and 8).
 
-Now that I had the PID set up as well as 
+Now that I had the PID framework set up, I sent time stamped sensor values and motor outputs so that I could graph the outputs of various PID control runs.
+
+Here is an example of my first run with KP as 0.12:
+
+
+
 
 LOG DATA: If you don’t want to repeat work during Lab 7, be sure to log all data (time stamped sensor values and motor outputs), as well as setup variables from at least one successful run. Even if you are doing orientation control, be sure to log ToF data as you speed towards the wall as well.
 Documentation: Please clearly document the maximum linear or angular speed you are able to achieve (you can use your sensors to compute this). To demonstrate reliability, please upload videos of at least three repeated (and hopefully successfull) experiments.
