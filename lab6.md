@@ -34,6 +34,10 @@ frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen></iframe>
 
-However, one issue I noticed was that the robot seemed to move linearly as well in between trying to reach setpoints. i.e. if I were to not just place it at a random yaw angle but rather move it's yaw angle, I noticed that this wouldn't necessarily lead to it trying to return to the setpoint directly but rather moving linearly and then returning to the setpoint eventually. To expedite this process up, I decided to play around with my controller. 
+However, one issue I noticed was that the robot seemed to move linearly as well in between trying to reach setpoints. i.e. if I were to not just place it at a random yaw angle but rather move it's yaw angle, I noticed that this wouldn't necessarily lead to it trying to return to the setpoint directly but rather moving linearly and then returning to the setpoint eventually. To expedite this process up, I decided to play around with my controller. After trying a couple different set points, I realized that the issue in my controller was that the gyro data wasn't being integrated correctly. That's what was causing the speed of my motors to simply keep increasing.
+
+<img width="68" alt="Screenshot 2024-03-27 at 5 59 27 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/fe117b47-f57a-465d-9266-fb90529063ed">
+
+After reading the lab again, I noticed the option to use dmp instead for the yaw values which would also take care of issues with sensor noise and drift. I then worked to implement that in my code to see if the P controller would work better instead.
 
 
