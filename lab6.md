@@ -34,5 +34,6 @@ frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen></iframe>
 
+However, one issue I noticed was that the robot seemed to move linearly as well in between trying to reach setpoints. i.e. if I were to not just place it at a random yaw angle but rather move it's yaw angle, I noticed that this wouldn't necessarily lead to it trying to return to the setpoint directly but rather moving linearly and then returning to the setpoint eventually. To expedite this process up, I decided to play around with my controller. 
 
 
