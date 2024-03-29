@@ -42,6 +42,7 @@ I started playing around with my gyro values (basically changing my ICs and play
 
 <img width="96" alt="Screenshot 2024-03-29 at 3 49 01 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/d9d2a405-e36f-4c93-a775-eb901657b656">
 
+I was having an issue with my motors at this point which I wasn't able to fix in time for this lab but when logging what PWM values were being returned, I could clearly see that as the angle from the setpoint increased, the motor values would continue to increase and as I moved the car closer to the setpoint, they would decrease. I also graphed these values to see how they responded. Here's an example:
 
 
 
