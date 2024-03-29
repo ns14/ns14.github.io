@@ -25,10 +25,10 @@ I started off simple with a P controller. I found the error between the set poin
 
 I had a hard stop set after 1000 data points of yaw were collected in case there was an issue with Bluetooth.
 
-Here is a video of my robot's response to a random setpoint value. As can be seen it seems to reach the setpoint, stops, and then when it loops again, returns back to the set point. However, I noticed that this would mean that he 
+Here is a video of my robot's response to a random setpoint value. As can be seen it seems to reach the setpoint, stops, and then when it loops again, returns back to the set point. 
 
 <iframe width="315" height="560"
-src="https://youtu.be/embed/2D20kxEkXE4"
+src="https://www.youtube.com/embed/2D20kxEkXE4"
 title="YouTube video player"
 frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -38,6 +38,11 @@ However, one issue I noticed was that the robot seemed to move linearly as well 
 
 <img width="68" alt="Screenshot 2024-03-27 at 5 59 27 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/fe117b47-f57a-465d-9266-fb90529063ed">
 
-After reading the lab again, I noticed the option to use dmp instead for the yaw values which would also take care of issues with sensor noise and drift. I then worked to implement that in my code to see if the P controller would work better instead.
+I started playing around with my gyro values (basically changing my ICs and playing around with the equation) and realized that my ICs were causing my gyro data to be off (I was accidentally setting the initial angular position to be the angular velocity from the gyro). After fixing this, my gyro data seemed to be more accurate:
+
+<img width="96" alt="Screenshot 2024-03-29 at 3 49 01 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/d9d2a405-e36f-4c93-a775-eb901657b656">
+
+
+
 
 
