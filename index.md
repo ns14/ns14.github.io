@@ -14,3 +14,4 @@ Hi! My name is Nidhi Sonwalkar, and I am a first-semester senior studying mechan
 - [Lab 4: Motors](/lab4)
 - [Lab 5: Linear PID Control](/lab5)
 - [Lab 6: Orientation PID Control](/lab6)
+- [Lab 7: Kalman Filter](/lab7)
