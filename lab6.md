@@ -13,6 +13,7 @@ Here is an example of the Yaw Data being sent over Bluetooth to my computer (I a
 I started my orientation control by integrating my gyroscope data to get an estimate of orientation for the robot. This process was pretty much derived from that done in the IMU lab. Recall that in Lab 2, the gyroscope seemed to have a lot of angular drift. Because of that, digital integration would integrate that error as well leading to more inaccurate results in angular position over time. Another issue with this integration is data not updating fast enough (due to a slower sampling rate) which would mean that the the angular position over time integrated from the angular velocity would be less accurate as well. To solve this, I minimized delays/Serial.prints() etc. as much as possible and considered adding a "drift" factor to my gyroscopic integration depending on how much drift I experimentally expected. For initial testing, I decided not to include a drift factor in my yaw integration to see how much of an error this would actually be before making the decision to use this.
 
 Orientation Determination and Bluetooth to Computer:
+
 <img width="342" alt="Screenshot 2024-03-27 at 9 44 53 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/9ae970ce-daad-4f16-95bb-b23db8b3ea27">
 
 Reading the data sheet for the gyroscope, I found that the max rotational velocity (degrees per second) the gyroscope can range is +/- 2000 dps which seems largely sufficient for our applications. Other possible limitations include the precision of our sensor: When leaving the sensor stationary, I saw that the values of the yaw was changing +/-2 degrees despite no rotational velocity. This was probably caused by gyro drift that I accounted for above. In terms of sampling rate, after removing unnecessary delays/Serial print statements, I was able to sample data every 3 milliseconds consistent with my findings from the IMU lab.
@@ -29,9 +30,23 @@ I had a busier schedule during this lab (and my battery connectors broke while I
 
 I had a hard stop set after 1000 data points of yaw were collected in case there was an issue with Bluetooth.
 
-I ended up having a huge issue with my motors. When I ran the control loop, I found that one of my motors would start turning and the other one wouldn't. I found that this was an issue in my calibration factor in that I needed to add some kind of calibration factor for both of them to move at the same actual speed (as we had done in the motor driver lab). To fix this, I played around with different PWM signals to make sure that both motors would move.
+I ended up having an issue with my motors not turning simultaneously. When I ran the control loop, I found that one of my motors would start turning and the other one wouldn't. I found that this was an issue in my calibration factor in that I needed to add some kind of calibration factor for both of them to move at the same actual speed (as we had done in the motor driver lab). To fix this, I played around with different PWM signals to make sure that both motors would move. Here's a video of their being a slight delay in the motors spinning (without control loop):
 
-I also ran into the issue of my motors not overcoming the friction of the carpet in my apartment. I had initially set a really low KP value which meant that the PWM signal that I was inputting into the system was too low for the wheels to overcome the static friction from the carpet. To fix this, I tuned by KP value until it would have the correct proportion of error to speed of the wheels. I ended up on a KP value of 5 that led to promising results.
+<iframe width="315" height="560"
+src="https://www.youtube.com/embed/Gu5FuG36Wik"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+
+I also ran into the issue of my motors not overcoming the friction of the carpet in my apartment. I had initially set a really low KP value which meant that the PWM signal that I was inputting into the system was too low for the wheels to overcome the static friction from the carpet. To fix this, I tuned by KP value until it would have the correct proportion of error to speed of the wheels. I ended up on a KP value of 5 that led to promising results (in this video, you can hear the motor drivers turning the motors but them saturating due to the KP value!):
+
+<iframe width="315" height="560"
+src="https://www.youtube.com/embed/Iila5h8sR_s"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
 
 However, one issue I noticed was that the robot seemed to move non-rotationally as well in between trying to reach setpoints; i.e., if I were to not just place it at a random yaw angle but rather move it's yaw angle, I noticed that this wouldn't necessarily lead to it trying to return to the setpoint directly but rather moving linearly and then returning to the setpoint eventually. To expedite this process up, I decided to play around with my controller. After trying a couple different set points, I realized that the issue in my controller was that the gyro data wasn't being integrated correctly due to an incorrect initial condition of the yaw. That's what was causing the speed of my motors to simply keep increasing and starting to move linearly. To fix this, I reassigned which pins would need the positive vs. negative speed (I had them both at the positive speed). I started playing around with my gyro values (basically changing my ICs and playing around with the equation) and realized that my ICs were causing my gyro data to be off (I was accidentally setting the initial angular position to be the angular velocity from the gyro). After fixing this, my gyro data seemed to be more accurate:
 
