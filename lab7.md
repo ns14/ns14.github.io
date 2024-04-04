@@ -36,8 +36,19 @@ I then discretized the state space with dimension of the state space being 2 (se
 
 I next initialized the covariances. sig_z defines noise in the measurement (i.e. we estimate this to be around 20 mm). sig_u defines noise in the process (depending on the sampling rate). Because we assume uncorrelated noise for the Kalman filter, the off diagonal terms are 0 sig_u.
 
-<img width="662" alt="Screenshot 2024-04-03 at 4 07 42 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/0569b1d7-c811-48e8-9a87-cae5bf4857c0">
-
-
 For the position this is: sqrt(100 / 0.1) = 31 mm.
 For the velocity this is: sqrt(100 / 0.1) = 31 mm/s.
+
+After implementing the Kalman Filter Function, I received this graph of the data:
+
+<img width="662" alt="Screenshot 2024-04-03 at 4 07 42 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/0569b1d7-c811-48e8-9a87-cae5bf4857c0">
+
+Initially, my Kalman Filter was entirely off because the covariance matrices were too skewed towards the model as opposed to the sensor mesaurement. To fix this, I increased the initial covariance of the model which would lead to distrust in the model and more weightage of the sensor reading. The largest effect came from altering the covariance of the position model. When slightly increasing it, I noticed that there was a more accurate following of the sensor data:
+
+<img width="397" alt="Screenshot 2024-04-04 at 8 04 56 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/04ffdf47-4906-4426-a46c-cfdbe53d376e">
+
+However, if the covariance of the sensor data was increased, there would be less probability that it was accurate and therefore more trust on the model itself. This results in a Kalman Filter that falls slightly behind the sensor readings:
+
+<img width="396" alt="Screenshot 2024-04-04 at 8 06 49 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/10e064d0-99b6-4abc-87f3-0f1024b4c3bf">
+
+Thus, I was able to tune my covariances to get a fairly accurate Kalman Filter as seen above!
