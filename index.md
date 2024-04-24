@@ -16,4 +16,5 @@ Hi! My name is Nidhi Sonwalkar, and I am a first-semester senior studying mechan
 - [Lab 6: Orientation PID Control](/lab6)
 - [Lab 7: Kalman Filter](/lab7)
 - [Lab 8: Stunts](/lab8)
-- [Lab 9: Localization (Sim)](/lab9)
+- [Lab 9: Mapping](/lab9)
+- [Lab 10: Localization (Sim)](/lab10)
