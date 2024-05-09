@@ -18,3 +18,4 @@ Hi! My name is Nidhi Sonwalkar, and I am a first-semester senior studying mechan
 - [Lab 8: Stunts](/lab8)
 - [Lab 9: Mapping](/lab9)
 - [Lab 10: Localization (Sim)](/lab10)
+- [Lab 11: Localization (Real)](/lab11)
