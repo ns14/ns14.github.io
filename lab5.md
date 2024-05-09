@@ -48,18 +48,6 @@ Now that I had the PID framework set up, I sent time stamped sensor values and m
 
 Here is an example of my first run with KP as 0.12:
 
-
-
-
-LOG DATA: If you don’t want to repeat work during Lab 7, be sure to log all data (time stamped sensor values and motor outputs), as well as setup variables from at least one successful run. Even if you are doing orientation control, be sure to log ToF data as you speed towards the wall as well.
-Documentation: Please clearly document the maximum linear or angular speed you are able to achieve (you can use your sensors to compute this). To demonstrate reliability, please upload videos of at least three repeated (and hopefully successfull) experiments.
-Frequency: Fast loop times means everything to a good controller. Be sure to include a discussion of sensor sampling rate and how this affects the timing of your control loop. Avoid using blocking statements when you can (e.g. delay() or while(sensor not ready) ){wait} ). Also, remember that any serial.print/BLE sending that occurs during execution may slow down your loop time considerably.
-Deadband: From Lab 5, you should have found the deadband of your motor (the region below which the power to the motors does not overcome the static friction in your system). Consider writing a scaling function that converts the output from your PID controller to an output for which the motors can actually react.
-Wind up: If you include an integrator, consider whether you need to worry about integrator wind-up.
-Derivative LPF: If you include a derivative, consider whether it is necessary to include a low pass filter in the derivative branch.
-Derivative kick: Consider whether the derivative kick can cause any issues, given the task you choose. Here is a great overview on how to eliminate derivative kick: http://brettbeauregard.com/blog/2011/04/improving-the-beginner’s-pid-derivative-kick/
-Motor drivers: Recall Lecture 6 on Actuators and that the motor drivers have both coasting and active breaking modes. These might come in handy.
-
 # P Control
 I first implemented
 
