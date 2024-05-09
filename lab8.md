@@ -68,7 +68,7 @@ allowfullscreen></iframe>
 
 # Task 2: Orientation Control
 
-Although I did not explicitly choose to work on orientation control/drift for this lab; I was playing around with it when working on Orientation Control (my robot would move forward/backwards then turn back to its original set point and continue moving). Here's a video fo that:
+Although I did not explicitly choose to work on orientation control/drift for this lab; I was playing around with it when working on Orientation Control (my robot would move forward/backwards then turn back to its original set point and continue moving). Here's a video of that:
 
 <iframe width="315" height="560"
 src="https://www.youtube.com/embed/2D20kxEkXE4"
