@@ -5,10 +5,9 @@ Lab 9 took me a lot longer than expected because one set of wheels on my robot w
 # PID Orientation Control
 
 I first started with PID Orientation Control of the robot's one set of wheels to enable on axis turns. The code for it is listed below (because one set of wheels wasn't working, I changed it to only use P control for simplicity although this rendered likely a lot of steady state error that an integrator would've taken care of).
+I had originally tried working with Velocity Control, but I realized that because the velocity wouldn't be super accurate, this was messing up my map. With Orientation Control, I created a for loop of each of the angles that I wanted the robot to be at (around 0.436 radians incrementally), and used a P controller to multiply the error of the setpoint by the KP value. I had a threshold for how big the error could be before it exited the inner while loop for error and incremented to the next angle that it would need to reach. At each setpoint, I took ToF readings which I averaged such that I would have a sensor range reading for each sensor bearing. Code for this is shown below:
 
 <img width="390" alt="Screenshot 2024-05-13 at 11 08 53 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/9a07b7f1-1c4e-46cd-9d23-aa3b96d4542a">
-
-I had originally tried working with Velocity Control, but I realized that because the velocity wouldn't be super accurate, this was messing up my map. With Orientation Control, I created a for loop of each of the angles that I wanted the robot to be at (around 0.436 radians incrementally), and used a P controller to multiply the error of the setpoint by the KP value. I had a threshold for how big the error could be before it exited the inner while loop for error and incremented to the next angle that it would need to reach. At each setpoint, I took 10 ToF readings which I averaged such that I would have a sensor range reading for each sensor bearing. Code for this is shown below:
 
 My sensor does have a lot of drift but not too much based on my IMU testing in earlier labs. Based on how much drift I found in the IMU lab, the average error is probably around 0.05 - 0.1 radians, and the maximum I found while testing in this lab was around 1 radian (which I corrected for by reducing the threshold of how much error was okay before changing the setpoint to the next angle in the full 360 degree rotation).
 
@@ -31,12 +30,9 @@ Point 1 (-3, -2):
 
 <img width="277" alt="Screenshot 2024-05-13 at 10 29 07 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/ec538555-6e7a-48f1-a943-20ed873af1a4">
 
-
-
 Point 2 (0, 3):
 
 <img width="299" alt="Screenshot 2024-05-13 at 10 29 13 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/dc04d99b-e885-4334-828e-f032e5eef6b9">
-
 
 Point 3 (5, 3):
 
@@ -57,7 +53,6 @@ As can be seen, my graph isn't a great map, and I assume this is because my PID 
 Drawing a general trace around the map, I can get this general view of what the lab setup looks like:
 
 <img width="434" alt="Screenshot 2024-05-13 at 11 05 03 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5673e565-0b62-4363-9fd4-c5898c9d1d2a">
-
 
 My map tends to not fare well with the boxes placed in the middle of the ground but has a general overall trace of the arena. Because I was spinning off axis and so there was a little bit of a larger turn in my robot (i.e. it would not spin about its center), I think this caused some of my TOF sensor readings to be off because they were not taken via a consistent spin. I would have liked some more time to take apart my robot and access the bottom motor so that I could have taken more precise data to generate a better map, but I have a general understanding of how the mapping process works!
 
