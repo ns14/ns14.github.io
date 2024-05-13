@@ -2,7 +2,7 @@
 
 # Localization
 
-While working on this lab, I was having issues with my robot's motors (they were turning at very inconsistent speeds, and sometimes one set of wheels would stop turning entirely). Although I was able to solve this issue, because I left Ithaca Friday, May 11, I was unable to actually run the localization scripts on my robot. Instead, I borrowed Daria Kot's data for localization to see how well it would be estimated and also attached a video of my robot localizing in my room instead. I've also attached code I would have implemented on my robot if I had time to actually localize at each of the points in lab.
+While working on this lab, I was having issues with my robot's motors (they were turning at very inconsistent speeds, and sometimes one set of wheels would stop turning entirely). Although I was able to temporarily fix this, when I went to collect my data again, I realized that the wire connecting one of the motor drivers to the motor had completely come out (not on the motor driver side but on the motor side). This essentially meant that I had no control over one set of wheels, so in order to perform orientation control, I would need to somehow restrict those set of wheels from turning and only let the other set of wheels turn (thus the robot would rotate about the axis of the non-spinning set of wheels). Although this could have been solved mechanically (my jamming the other wheels), due to time constraints as I was leaving Ithaca, I decided, for the purpose of this lab, to use my Lab 9 data as my mapping data was not working as planned. Overall, the issues with my motor meant that I didn't necessarily get the results that I wanted, but I'm super thankful for Larry for hosting OH super last minute so that I could spend some time to at least try getting a map + Jonathan for letting me use the room!!
 
 # Confirming that the Localization Worked in Sim
 
@@ -11,9 +11,6 @@ First step for this lab was to confirm that localization would work for in the s
 <img width="263" alt="Screenshot 2024-05-09 at 2 31 06 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/6aca91ac-ab19-4fd2-9175-64e6f8e32d2d">
 
 # Localization on Robot
-Given the note above, I used my friend, Daria Kot's data to test only the update step of the Bayes Filter on the robot. This was necessary because...
-
-I also tried out the <> function on my robot in my room to see if it would successfully return the sensor range and bearing data, and as can be seen in the video below, it was successful! Like I mentioned above, I didn't have time to do this in lab before I left Ithaca due to other debugging issues, so I borrowed Daria's data for the sake of showing that it worked in the simulation:
 
 # Conclusions
 
