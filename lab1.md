@@ -5,7 +5,7 @@
 Step 1 in Lab 1 was to install the Arduino IDE and follow the setup instructions to install the necessary board and libraries. To test that the board was successfully connected to my computer, I used Example: Blink it Up. This example caused the LED on the board to blink on and off which is useful in the future to denote when the Artemis is on (such as on boot up).
 
 <iframe width="315" height="560"
-src="https://youtube.com/embed/WW7X_P9v2Ms?feature=shared"
+src="https://youtube.com/embed/3FCZazfi9iA?feature=share"
 title="YouTube video player"
 frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
