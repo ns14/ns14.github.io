@@ -8,15 +8,14 @@ I first started with PID Orientation Control of the robot's one set of wheels to
 
 <img width="390" alt="Screenshot 2024-05-13 at 11 08 53 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/9a07b7f1-1c4e-46cd-9d23-aa3b96d4542a">
 
-
 I had originally tried working with Velocity Control, but I realized that because the velocity wouldn't be super accurate, this was messing up my map. With Orientation Control, I created a for loop of each of the angles that I wanted the robot to be at (around 0.436 radians incrementally), and used a P controller to multiply the error of the setpoint by the KP value. I had a threshold for how big the error could be before it exited the inner while loop for error and incremented to the next angle that it would need to reach. At each setpoint, I took 10 ToF readings which I averaged such that I would have a sensor range reading for each sensor bearing. Code for this is shown below:
 
 My sensor does have a lot of drift but not too much based on my IMU testing in earlier labs. Based on how much drift I found in the IMU lab, the average error is probably around 0.05 - 0.1 radians, and the maximum I found while testing in this lab was around 1 radian (which I corrected for by reducing the threshold of how much error was okay before changing the setpoint to the next angle in the full 360 degree rotation).
 
-Here is a video of my robot's PID control (again I had to jam one set of wheels by turning it):
+Here is a video of my robot's PID control (my hand is simply jamming one set of wheels so that it spins about that axis instead of also spinning while the other set of wheels is spinning):
 
 <iframe width="315" height="560"
-src="https://youtube.com/embed/h0l8JLjHY2U"
+src="https://youtube.com/embed/3FCZazfi9iA?feature=share"
 title="YouTube video player"
 frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
