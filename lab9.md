@@ -23,6 +23,8 @@ allowfullscreen></iframe>
 
 Because of me having to jam one set of my wheels, I wasn't able to graph good TOF data showing that PID control worked, but I do have descriptions quantifying my data collection below.
 
+<img width="416" alt="Screenshot 2024-05-13 at 11 25 08 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/bd8cc243-4a7e-47f0-b355-c59905d7c40e">
+
 After trusting that the data was collected at the correct radian values, I plotted the data using pyplot.polar:
 
 Point 1 (-3, -2):
