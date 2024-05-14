@@ -11,6 +11,31 @@ First step for this lab was to confirm that localization would work for in the s
 <img width="263" alt="Screenshot 2024-05-09 at 2 31 06 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/6aca91ac-ab19-4fd2-9175-64e6f8e32d2d">
 
 # Localization on Robot
+As mentioned above, I was having a lot of trouble getting my robot to map correctly because one of the motors was not working, so I instead defaulted to using my Lab 9 data to see if the robot worked instead.
+
+Here are the results for each run:
+
+Point 1:
+
+<img width="283" alt="Screenshot 2024-05-14 at 5 14 32 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/5d850112-c37c-40e2-820a-eae333582c75">
+
+
+Point 2:
+
+<img width="274" alt="Screenshot 2024-05-14 at 5 14 44 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/07f37f92-0f1b-4335-a701-420dd7d29cb9">
+
+
+
+Point 3:
+
+<img width="261" alt="Screenshot 2024-05-14 at 5 14 56 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/1cb9416b-f3b9-4110-8c21-29d0eb79b7cd">
+
+
+
+Point 4:
+
+<img width="310" alt="Screenshot 2024-05-14 at 5 17 02 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/117cc6f5-505f-4dcb-9735-5a54ab185b28">
+
 
 # Conclusions
 
