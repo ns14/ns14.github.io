@@ -36,6 +36,8 @@ Point 4:
 
 <img width="310" alt="Screenshot 2024-05-14 at 5 17 02 PM" src="https://github.com/ns14/ns14.github.io/assets/65001356/117cc6f5-505f-4dcb-9735-5a54ab185b28">
 
+Although points 1 and 2 seem to have localized fairly well (not entirely well), points 3 and 4 seem to be really poorly done. I think this is because when I was collecting my Lab 9 data for these two points, the robot moved a little linearly while it was turning which might have affected some of the ToF data that it was collecting. I would have liked to redo the localization but because my robot was broken, I was unfortunately unable to do so.
+
 
 # Conclusions
 
