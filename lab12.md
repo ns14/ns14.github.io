@@ -27,4 +27,4 @@ frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen></iframe>
 
-Although it is dissapointing that I wasn't able to fully implement Lab 12 on my robot, it goes to show that hardware functionality is just as important as the theory that goes behind most robotics. Overall, I had a great time taking this class and have learned a lot!! Huge thank you to Jonathan + the TAs for making this class what it was!!
+Although it is disappointing that I wasn't able to fully implement Lab 12 on my robot, it goes to show that hardware functionality is just as important as the theory that goes behind most robotics. Overall, I had a great time taking this class and have learned a lot!! Huge thank you to Jonathan + the TAs for making this class what it was!!
