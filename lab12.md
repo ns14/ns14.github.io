@@ -13,6 +13,7 @@ Open Loop Implementation:
 <img width="220" alt="Screenshot 2024-05-16 at 10 30 57 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/c04b0e3d-f7fc-42c8-8d6b-d633b80fbdb9">
 
 Closed Loop Implementation:
+
 <img width="261" alt="Screenshot 2024-05-16 at 10 30 28 AM" src="https://github.com/ns14/ns14.github.io/assets/65001356/c6e27a82-246b-4e7d-bc73-67f42fffb7a4">
 
 However, when I went to test this on my robot, I could hear one motor turning, but it was oversaturated because the friction of the other wheel being stationary on the floor of the room was too high for the robot to move forward. So unfortunately, I was unable to actually test my system on my robot :(.
